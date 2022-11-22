@@ -1,0 +1,105 @@
+<html>
+  
+    <head>
+    <link rel="stylesheet" href="\static\polls\style.css">
+    </head>
+    <body onload="createTable()">
+
+        <h1 >Input Space Coverage Calculator</h1>
+        <p1>Input Space Partitioning (ISP) is a widely-used critirion for software testing. It is a method can help you to choose the 
+          testing inputs morer systematically and check that inputs come from different parts of the input domain.
+          <br><br>ISP starts with a finite (usually small) set of characteristics. For example, characteristics to describe MS 
+          students might be: major, year started, status, and visa. Each characteristic is divided into a finite (usually small) 
+          set of blocks. For example, the student characteristics may have the following blocks:
+        </p1><br><br>
+        {% comment %} <button onclick="myCreateFunction()">Add A New Characteristic</button>
+        <table id="myTable" class="table-bordered">
+          <thead>
+            <tr>
+              <th>Characteristics</th>
+              <th>Block 1</th>
+              <th>Block 2</th>
+              <th>Block 3</th>
+              <th>Block 4</th>
+              <th>Block 5</th>
+              <th>Delete Row</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="Ch1"/></td>
+              <td><input type="text" id="Ch1B1"/></td>
+              <td><input type="text" id="Ch1B2"/></td>
+              <td><input type="text" id="Ch1B3"/></td>
+              <td><input type="text" id="Ch1B4"/></td>
+              <td><input type="text" id="Ch1B5"/></td>
+              <td class="delete_row">x</td>
+            </tr>
+            <tr>
+              <td><input type="text" id="Ch2"/></td>
+              <td><input type="text" id="Ch2B1"/></td>
+              <td><input type="text" id="Ch2B2"/></td>
+              <td><input type="text" id="Ch2B3"/></td>
+              <td><input type="text" id="Ch2B4"/></td>
+              <td><input type="text" id="Ch2B5"/></td>
+              <td class="delete_row">x</td>
+            </tr>
+            <tr>
+              <td><input type="text" id="Ch3"/></td>
+              <td><input type="text" id="Ch3B1"/></td>
+              <td><input type="text" id="Ch3B2"/></td>
+              <td><input type="text" id="Ch3B3"/></td>
+              <td><input type="text" id="Ch3B4"/></td>
+              <td><input type="text" id="Ch3B5"/></td>
+              <td class="delete_row">x</td>
+            </tr>
+          </tbody>
+        </table> {% endcomment %}
+
+        <center>
+          <input style="font-weight:bold;font-size:30px" type="button" id="example" value="Click to see an example of ISP" onclick="fillExample()" />
+        </center>
+        <p></p>
+       
+          <div id="cont"></div>  <!-- the container to add the TABLE -->
+          
+        <p>
+          <input type="button" id="addRow" value="Add Another Row of Characteristic" onclick="addRow()" />
+          <input type="button" id="clrInput" value="Clear the Form" onclick="clrInput()" />
+        </p>
+              
+        <p id='output'></p>
+        
+        <!--
+        SAVE CALCULATOR
+        -->
+        <h2>Choose Combination Type</h2>
+        <nav class='container'>
+        <button onclick = "acoc()" type='button' class='btn' id='acoc'> All combinations (ACoC)</button>
+        <button onclick = "ecc()" type='button' class='btn' id='ecc'>Each choice (ECC)</button>
+        <button onclick = "bcc()" type='button' class='btn' id='bcc'>Base choice (BCC)</button>
+        
+        <p><textarea id="copy_textarea" class="form-control form-control-lg" row="40">Combination Result</textarea></p>
+        <button type="button" id="copy_button" onclick = "copyResult()">Copy Result</button>
+        <button type='button' class='btn' id='clearResult' onclick = "clearResult()">Clear Result</button> 
+      </nav>
+        <h2>Definitions</h2>
+        <div id="thefooter"><div class="ctr">
+          <div class="card"><div class="title">All combinations (ACoC)</div>
+          <div class="content"><p>Every block in every characteristic is combined with every other block.
+          </p></div></div>
+
+          <div class="card"><div class="title">Each choice (ECC)</div>
+          <div class="content"><p>Every block in every characteristic appears in at least one combination. The number of combinations is equal to the number of blocks in the largest characteristic.  </p></div></div>
+
+          <div class="card"><div class="title">Base choice (BCC)</div>
+          <div class="content"><p>The tester chooses one “base” block from each characteristic. Which block and why that block is chosen does not matter for this project. Base choice combinations include the base combination (all the base blocks), plus one combination for each other block, swapped in one at a time.</p></div></div></div>
+        </div>
+    
+        {% load static  %}
+        <script  src= {% static 'UIfunctions.js' %}></script>  
+  </body>    
+
+</html>
+
+
